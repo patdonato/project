@@ -63,6 +63,9 @@ nearest <- function(data,group) {
   assign("match_df",match_df,envir=.GlobalEnv)
 }
 
+## Redo prop test
+prop.test(n = c(nrow(match_df %>% filter(trt == 0)), nrow(data %>% filter(trt == 1))),
+          x = c(sum(match_df %>% filter(trt == 0) %>% select(death)), sum(data %>% filter(trt == 1) %>% select(death))))
 nearest(data=data,group="trt")
 
 ## Check for the datasets generated
